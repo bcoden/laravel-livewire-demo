@@ -32,6 +32,7 @@ class ContactForm extends Mailable
     {
         //@todo configure from in env
         return $this->from(config('mail.from'))
+            ->subject(trans('Thank you for your interest'))
             ->view('emails.contact');
     }
 }

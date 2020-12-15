@@ -28,7 +28,6 @@ class Playground extends Component
     public function submitForm() {
         $contact = $this->validate();
 
-        sleep(5);
         // to requester
         Mail::to($this->email)->send(new ContactForm($this->name));
         // to admin

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Jobs\SendContactUsForm;
 use App\Mail\ContactForm;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
@@ -28,9 +29,8 @@ class Playground extends Component
     public function submitForm() {
         $contact = $this->validate();
 
-        // to requester
-        Mail::to($this->email)->send(new ContactForm($this->name));
-        // to admin
+        // add mail to the queue
+        SendContactUsForm::dispatch($contact);
 
         // clean up form
         $this->resetForm();

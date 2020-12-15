@@ -42,9 +42,6 @@ class ContactFormTest extends TestCase
     /** @test */
     public function contact_form_requires_name_field() {
         Livewire::test(Playground::class)
-            ->set('email', 'joemccorison@gmail.com')
-            ->set('phone', '2185254224')
-            ->set('message', 'This is a test')
             ->call('submitForm')
             ->assertHasErrors(['name' => 'required']);
 
@@ -54,9 +51,6 @@ class ContactFormTest extends TestCase
     public function contact_form_requires_a_name() {
         Livewire::test(Playground::class)
             ->set('name', 'test')
-            ->set('email', 'joemccorison@gmail.com')
-            ->set('phone', '2185254224')
-            ->set('message', 'This is a test')
             ->call('submitForm')
             ->assertHasErrors(['name' => 'min']);
 
@@ -65,9 +59,6 @@ class ContactFormTest extends TestCase
     /** @test */
     public function contact_form_requires_email_field() {
         Livewire::test(Playground::class)
-            ->set('name', 'test')
-            ->set('phone', '2185254224')
-            ->set('message', 'This is a test')
             ->call('submitForm')
             ->assertHasErrors(['email' => 'required']);
     }
@@ -75,10 +66,7 @@ class ContactFormTest extends TestCase
     /** @test */
     public function contact_form_requires_valid_email() {
         Livewire::test(Playground::class)
-            ->set('name', 'test')
             ->set('email', 'notvalid')
-            ->set('phone', '2185254224')
-            ->set('message', 'This is a test')
             ->call('submitForm')
             ->assertHasErrors(['email' => 'email']);
 
@@ -87,9 +75,6 @@ class ContactFormTest extends TestCase
     /** @test */
     public function contact_form_requires_phone_field() {
         Livewire::test(Playground::class)
-            ->set('name', 'test')
-            ->set('email', 'joemccorison@gmail.com')
-            ->set('message', 'This is a test')
             ->call('submitForm')
             ->assertHasErrors(['phone' => 'required']);
 
@@ -98,20 +83,13 @@ class ContactFormTest extends TestCase
     /** @test */
     public function contact_form_requires_a_valid_phone_number() {
         Livewire::test(Playground::class)
-            ->set('name', 'test')
             ->set('phone', 'A2185254224')
-            ->set('email', 'notvalid')
-            ->set('message', 'This is a test')
-            ->call('submitForm')
             ->assertHasErrors(['phone' => 'regex']);
     }
 
     /** @test */
     public function contact_form_requires_a_message_field() {
         Livewire::test(Playground::class)
-            ->set('name', 'Joe McCorison')
-            ->set('email', 'joemccorison@gmail.com')
-            ->set('phone', '2185254224')
             ->call('submitForm')
             ->assertHasErrors(['message' => 'required']);;
     }
@@ -119,9 +97,6 @@ class ContactFormTest extends TestCase
     /** @test */
     public function contact_form_requires_a_valid_message() {
         Livewire::test(Playground::class)
-            ->set('name', 'Joe McCorison')
-            ->set('email', 'joemccorison@gmail.com')
-            ->set('phone', '2185254224')
             ->set('message', 'test')
             ->call('submitForm')
             ->assertHasErrors(['message' => 'min']);;

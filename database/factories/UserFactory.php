@@ -30,4 +30,26 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
         ];
     }
+
+    /**
+     * @return UserFactory
+     */
+    public function active() {
+        return $this->state(function(array $attributes) {
+            return [
+                'active' => true
+            ];
+        });
+    }
+
+    /**
+     * @return UserFactory
+     */
+    public function inActive() {
+        return $this->state(function(array $attributes) {
+            return [
+                'active' => false
+            ];
+        });
+    }
 }

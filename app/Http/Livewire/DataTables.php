@@ -12,7 +12,7 @@ class DataTables extends Component
 
     public $search;
     public $active = true;
-    public $sortField = 'created_at';
+    public $sortField;
     public $sortAsc = true;
 
     public function updatingSearch()
@@ -37,7 +37,9 @@ class DataTables extends Component
         $users = User::where('name', 'like', sprintf($wildcard, $this->search))
             ->orWhere('email', 'like', sprintf($wildcard, $this->search))
             ->active($this->active)
-            ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
+            ->when($this->sortField, function($query) {
+                $query->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc');
+            })
             ->paginate(10);
         return view('livewire.data-tables', [
             'users' => $users

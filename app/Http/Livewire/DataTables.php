@@ -13,6 +13,11 @@ class DataTables extends Component
     public $search;
     public $active = true;
 
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
     public function render()
     {
         $wildcard = '%%%s%%';

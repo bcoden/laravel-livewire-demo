@@ -15,6 +15,7 @@
     </head>
     <body class="antialiased font-sans">
     <main class="container mx-auto">
+        <livewire:search-dropdown />
         <livewire:playground />
     </main>
     @livewireScripts

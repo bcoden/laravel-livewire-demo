@@ -9,10 +9,28 @@
         </div>
     </div>
 
-    <ul>
-    @foreach($users as $user)
-        <li>{{ $user['name'] }} | {{ $user['email'] }}</li>
-    @endforeach
-    </ul>
+    <table>
+        <tr>
+            <th>
+                <div class="flex items-center">
+                    <button wire:click="setSortColumn('name')">Name</button>
+                </div>
+            </th>
+            <th>
+                <div>
+                    <button wire:click="setSortColumn('email')">Email</button>
+                </div>
+            </th>
+            <th>Active</th>
+        </tr>
+        @foreach($users as $user)
+            <tr>
+                <td>{{ $user['name'] }}</td>
+                <td>{{ $user['email'] }}</td>
+                <td>{{ $user['active'] ? 'Active' : 'Inactive' }}</td>
+            </tr>
+        @endforeach
+    </table>
+
     {{ $users->links() }}
 </div>

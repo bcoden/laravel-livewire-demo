@@ -7,15 +7,6 @@ use Illuminate\Contracts\Validation\Rule;
 class PhoneNumber implements Rule
 {
     const PHONE_NUMBER_PATTERN = '/^\(?[0-9]{3}\)?\s?[0-9]{3}[\s-]?[0-9]{4}$/';
-    /**
-     * Create a new rule instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
 
     /**
      * Determine if the validation rule passes.

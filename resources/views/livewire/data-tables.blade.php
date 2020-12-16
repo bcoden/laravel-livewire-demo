@@ -9,7 +9,7 @@
         </div>
     </div>
 
-    <table>
+    <table class="w-full">
         <tr>
             <th>
                 <div class="flex items-center">
@@ -35,9 +35,9 @@
         </tr>
         @foreach($users as $user)
             <tr>
-                <td>{{ $user['name'] }}</td>
-                <td>{{ $user['email'] }}</td>
-                <td>{{ $user['active'] ? 'Active' : 'Inactive' }}</td>
+                <td class="w-5/12 text-truncate">{{ $user['name'] }}</td>
+                <td class="w-5/12 text-truncate">{{ $user['email'] }}</td>
+                <td class="w-2/12 text-truncate">{{ $user['active'] ? 'Active' : 'Inactive' }}</td>
             </tr>
         @endforeach
     </table>

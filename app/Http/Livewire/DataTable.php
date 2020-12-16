@@ -6,7 +6,7 @@ use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class DataTables extends Component
+class DataTable extends Component
 {
     use WithPagination;
 
@@ -48,7 +48,7 @@ class DataTables extends Component
                 $query->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc');
             })
             ->paginate(10);
-        return view('livewire.data-tables', [
+        return view('livewire.data-table', [
             'users' => $users
         ]);
     }
